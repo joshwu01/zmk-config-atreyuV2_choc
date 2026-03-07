@@ -4,6 +4,7 @@ name: ATREYU
 type: shield
 url: https://github.com/climent/atreyu/tree/master/pcb/v2
 requires: [pro_micro]
+exposes: [i2c_oled]
 features:
   - keys
   - display 
