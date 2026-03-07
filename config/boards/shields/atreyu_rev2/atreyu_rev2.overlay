@@ -68,22 +68,4 @@ RC(8,5) RC(8,4) RC(8,3) RC(8,2) RC(8,1) RC(8,0) RC(9,0) RC(9,1) RC(9,2) RC(9,3) 
         sensors = <&right_encoder>;
         triggers-per-rotation = <20>;	
     };
-
-    leds {
-        compatible = "pwm-leds";
-    };
-
-    led_strip: ws2812 {
-        compatible = "worldsemi,ws2812";
-        label = "WS2812";
-        chain-length = <5>;       // LED 数量
-        color-mapping = <LED_COLOR_ID_RED LED_COLOR_ID_GREEN LED_COLOR_ID_BLUE>;
-        spi-max-frequency = <4000000>;
-        data-gpios = <&gpio3 1 GPIO_ACTIVE_HIGH>; // 数据引脚
-    };
-
-&zmk_keymap {
-    chosen {
-        zmk,underglow = &led_strip;
-    };
 };
