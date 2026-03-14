@@ -14,7 +14,7 @@
 ---
 include:
   - board: nice_nano_v2
-    shield: atreyu_rev2 nice_oled
+    shield: atreyu_rev2 oled_adapter_pro_micro_128x64
     artifact-name: atreyu_rev2 
   - board: nice_nano_v2
     shield: settings_reset
