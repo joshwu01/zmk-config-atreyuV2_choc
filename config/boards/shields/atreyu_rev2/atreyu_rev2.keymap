@@ -81,6 +81,7 @@
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
                };
         };
+};
 
 &nice_view_spi {
   cs-gpios = <&gpio1 1 GPIO_ACTIVE_HIGH>;
