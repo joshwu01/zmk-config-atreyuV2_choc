@@ -10,9 +10,6 @@ manifest:
       remote: zmkfirmware
       revision: v0.3.0
       import: app/west.yml
-    # support oled 128X64    
-    - name: zmk-oled-adapter
-      remote: mctechnology17
-      revision: main
+
   self:
     path: config
