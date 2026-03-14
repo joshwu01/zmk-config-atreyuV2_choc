@@ -78,8 +78,8 @@ RC(8,5) RC(8,4) RC(8,3) RC(8,2) RC(8,1) RC(8,0) RC(9,0) RC(9,1) RC(9,2) RC(9,3) 
         compatible = "sharp,ls0xx";
         spi-max-frequency = <1000000>;
         reg = <0>;
-        width = <160>;
-        height = <68>;
+        width = <128>;
+        height = <128>;
     };
 };
 
