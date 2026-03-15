@@ -75,14 +75,14 @@ RC(8,5) RC(8,4) RC(8,3) RC(8,2) RC(8,1) RC(8,0) RC(9,0) RC(9,1) RC(9,2) RC(9,3) 
      status = "okay";
  
      oled: ssd1306@3c {
-         compatible = "solomon,ssd1306fb";
+         compatible = "ssinowealth,sh1106";
          reg = <0x3c>;
          width = <128>;
-         height = <32>;
-         segment-offset = <0>;
+         height = <64>;
+         segment-offset = <2>;
          page-offset = <0>;
          display-offset = <0>;
-         multiplex-ratio = <31>;
+         multiplex-ratio = <63>;
          segment-remap;
          com-invdir;
          com-sequential;
