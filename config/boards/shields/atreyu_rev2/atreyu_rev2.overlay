@@ -5,6 +5,8 @@
  */
 
 #include <dt-bindings/zmk/matrix_transform.h>
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/spi/spi.h>
 
 / {
     chosen {
@@ -71,32 +73,48 @@ RC(8,5) RC(8,4) RC(8,3) RC(8,2) RC(8,1) RC(8,0) RC(9,0) RC(9,1) RC(9,2) RC(9,3) 
 };
 
 	//cs-gpios = <&gpio1 1 GPIO_ACTIVE_HIGH>;
-
 / {
     chosen {
-        zmk,display = &memory_lcd;
+        /* 指定 ZMK 使用此节点作为显示器 */
+        zmk,display = &sharp_lcd;
     };
 };
 
-&spi1 {  // 根据你的主控选择正确的 SPI 总线 (spi0, spi1, spi2)
+/* 
+   启用 SPI0 控制器 
+   Nice!Nano V2 默认启用了 spi0，对应引脚：
+   SCK: P0.25 (D15)
+   MOSI: P0.26 (D16)
+   MISO: P0.27 (D17) - 屏幕不需要
+*/
+&spi0 {
     status = "okay";
-    /* 可选：如果主控需要设置特定频率 */
-    // pinctrl-0 = <&spi1_sck_pd3 &spi1_mosi_pd4>;
-    // pinctrl-names = "default";
 
-    memory_lcd: ls013b7dh03@0 {
+    sharp_lcd: sharp-ls013b7dh03@0 {
         compatible = "sharp,ls013b7dh03";
-        reg = <0>;  // CS 片选引脚 (通过 GPIO 控制，见下文)
-        spi-max-frequency = <1000000>;  // 最大 1MHz (根据数据手册)
+        reg = <0>;
+        spi-max-frequency = <1000000>; /* 1MHz，稳定且快速 */
 
-        /* 关键 GPIO 定义 - 必须与硬件连接一致 */
-        reset-gpios = <&gpio0 25 GPIO_ACTIVE_LOW>;    // RST 引脚
-        data-command-gpios = <&gpio0 26 GPIO_ACTIVE_HIGH>; // RS/DC 引脚
+        /* 
+           引脚配置 (根据上面的接线表) 
+           格式: <&gpio0 [GPIO编号] [极性]>
+        */
 
-        /* 屏幕参数 */
+        /* CS: 接在 D10 -> P0.17 */
+        cs-gpios = <&gpio0 17 GPIO_ACTIVE_LOW>;
+
+        /* EXTCOMIN: 接在 D14 -> P0.18 */
+        data-command-gpios = <&gpio0 18 GPIO_ACTIVE_HIGH>;
+
+        /* RESET: 接在 D9 -> P0.19 (如果没接 Reset 线，可注释掉此行，但建议接上) */
+        reset-gpios = <&gpio0 19 GPIO_ACTIVE_LOW>;
+
+        /* 屏幕分辨率 */
         width = <128>;
         height = <128>;
-        rotation = <0>;  // 支持 0, 90, 180, 270
+
+        /* 旋转角度: 0, 90, 180, 270 */
+        rotation = <0>; 
 
         status = "okay";
     };
