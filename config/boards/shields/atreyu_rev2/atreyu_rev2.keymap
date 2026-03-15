@@ -82,11 +82,3 @@
                };
         };
 };
-
-&nice_view_spi {
-	cs-gpios = <&gpio1 1 GPIO_ACTIVE_HIGH>;
-	nice_view: ls0xx@0 {
-		width = <128>;
-		height = <128>;
-    };
-};
