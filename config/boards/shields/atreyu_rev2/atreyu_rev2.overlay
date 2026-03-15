@@ -73,16 +73,15 @@ RC(8,5) RC(8,4) RC(8,3) RC(8,2) RC(8,1) RC(8,0) RC(9,0) RC(9,1) RC(9,2) RC(9,3) 
     chosen {
         zmk,display = &memory_lcd;
     };
-};
 
-	spi1 {  // 根据你的主控选择正确的 SPI 总线 (spi0, spi1, spi2)
-	    status = "okay";
-		cs-gpios = <&gpio1 1 GPIO_ACTIVE_HIGH>;
-	    memory_lcd: ls013b7dh03@0 {
-	        compatible = "sharp,ls013b7dh03";
-	        spi-max-frequency = <1000000>;  
-	        width = <128>;
-	        height = <128>;
-	        rotation = <0>;  
+&nice_view_spi {
+	status = "okay";
+	cs-gpios = <&gpio1 1 GPIO_ACTIVE_HIGH>;
+	memory_lcd: ls013b7dh03@0 {
+	    compatible = "sharp,ls013b7dh03";
+	    spi-max-frequency = <1000000>;  
+	    width = <128>;
+	    height = <128>;
+	    rotation = <0>;  
     };
 };
