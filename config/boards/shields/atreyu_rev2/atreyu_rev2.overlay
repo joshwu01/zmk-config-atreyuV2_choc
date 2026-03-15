@@ -5,6 +5,7 @@
  */
 
 #include <dt-bindings/zmk/matrix_transform.h>
+#include <dt-bindings/display/ls0xx.h>
 
 / {
     chosen {
@@ -67,5 +68,17 @@ RC(8,5) RC(8,4) RC(8,3) RC(8,2) RC(8,1) RC(8,0) RC(9,0) RC(9,1) RC(9,2) RC(9,3) 
         compatible = "zmk,keymap-sensors";
         sensors = <&right_encoder>;
         triggers-per-rotation = <30>;	
+    };
+};
+
+
+&spi0 {
+    status = "okay";
+    display: ls0xx@0 {
+        compatible = "sharp,ls0xx";
+        spi-max-frequency = <1000000>; // 通信速度
+        width = <128>;
+        height = <128>;
+        rotation = <0>; // 旋转角度
     };
 };
