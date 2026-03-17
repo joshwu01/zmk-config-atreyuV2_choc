@@ -77,8 +77,8 @@ RC(8,5) RC(8,4) RC(8,3) RC(8,2) RC(8,1) RC(8,0) RC(9,0) RC(9,1) RC(9,2) RC(9,3) 
      oled: ssd1306@3c {
          compatible = "solomon,ssd1306fb";
          reg = <0x3c>;
-         width = <128>;
-         height = <64>;
+         width = <64>;
+         height = <128>;
          segment-offset = <0>;
          page-offset = <0>;
          display-offset = <0>;
