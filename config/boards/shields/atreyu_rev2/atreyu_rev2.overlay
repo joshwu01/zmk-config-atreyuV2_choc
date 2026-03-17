@@ -75,8 +75,8 @@ RC(8,5) RC(8,4) RC(8,3) RC(8,2) RC(8,1) RC(8,0) RC(9,0) RC(9,1) RC(9,2) RC(9,3) 
      status = "okay";
  
      oled: ssd1306@3c {
-         compatible = "solomon,ssd1306fb";
-         reg = <0x3d>;
+         compatible = "sinowealth,sh1106";
+         reg = <0x3c>;
          width = <128>;
          height = <64>;
          segment-offset = <0>;
@@ -85,7 +85,6 @@ RC(8,5) RC(8,4) RC(8,3) RC(8,2) RC(8,1) RC(8,0) RC(9,0) RC(9,1) RC(9,2) RC(9,3) 
          multiplex-ratio = <63>;
          segment-remap;
          com-invdir;
-         com-sequential;
          inversion-on;
          prechargep = <0x22>;
      };
