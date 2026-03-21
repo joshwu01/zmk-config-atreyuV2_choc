@@ -77,7 +77,7 @@
         zmk,physical-layouts = &keyature_layout;
     };
 }; 
-&keyature_layout {
+&atreyu_rev2_layout {
 	transform = <&default_transform>;
 	kscan = <&kscan0>;
 };
