@@ -5,6 +5,7 @@
  */
 
 #include <dt-bindings/zmk/matrix_transform.h>
+#include "atreyu_rev2-layouts.dtsi"
 
 / {
     chosen {
