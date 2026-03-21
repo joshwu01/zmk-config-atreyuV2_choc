@@ -74,7 +74,7 @@
 / {
     chosen {
         zmk,kscan = <&kscan0>;
-        zmk,physical-layouts = &keyature_layout;
+        zmk,physical-layouts = &atreyu_rev2_layout;
     };
 }; 
 &atreyu_rev2_layout {
