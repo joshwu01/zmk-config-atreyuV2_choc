@@ -4,7 +4,7 @@
 if SHIELD_ATREYU_REV2
 
 config ZMK_KEYBOARD_NAME
-    default "joshwu_Atreyu"
+    default "Atreyu"
 
 endif
 
